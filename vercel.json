@@ -1,11 +1,17 @@
 {
   "version": 2,
   "builds": [
-    { "src": "chmuralab/wsgi.py", "use": "@vercel/python" },
+    {
+      "src": "deployforge/wsgi.py",
+      "use": "@vercel/python"
+    },
     { "src": "staticfiles/**", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/static/(.*)", "dest": "/staticfiles/$1" },
-    { "src": "/(.*)", "dest": "chmuralab/wsgi.py" }
+    {
+      "src": "/(.*)",
+      "dest": "deployforge/wsgi.py"
+    }
   ]
 }

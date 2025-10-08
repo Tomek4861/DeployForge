@@ -24,4 +24,4 @@ RUN python manage.py collectstatic --noinput --clear
 EXPOSE 8000
 
 # start command
-CMD ["gunicorn", "chmuralab.wsgi:application", "--bind", "0.0.0.0:8000", "--timeout", "60"]
+CMD ["gunicorn", "deployforge.wsgi:application", "--bind", "0.0.0.0:8000", "--timeout", "60"]

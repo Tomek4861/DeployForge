@@ -1,2 +1,3 @@
 * linguist-detectable=false
-sampleapp/** linguist-detectable=true
+deployforge/** linguist-detectable=true
+deployforge/** linguist-language=Python

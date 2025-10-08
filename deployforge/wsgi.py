@@ -1,5 +1,5 @@
 """
-WSGI config for chmuralab project.
+WSGI config for deployforge project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,7 +11,7 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'chmuralab.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'deployforge.settings')
 
 application = get_wsgi_application()
 app = application
