@@ -1,17 +1,17 @@
-# 1. Uzycie obrazu Python
+# Use python
 FROM python:3.10
 
-# 2. Ustawienie katalogu roboczego wewnątrz kontenera
+# set workdir inside container
 WORKDIR /app
 
-# 3. Kopiowanie plików (bez .venv i zbednych [plikow])
+# copy files
 COPY . /app/
 
-# 4. Instalacja zaleznosci
+# install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 5. Otworzenie portu dla aplikacji
+# state which port will be used
 EXPOSE 8000
 
-# 6. Ustawienie punktug wejscia dla kontenera
+# start command
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
