@@ -1,13 +1,29 @@
 from django import forms
 
+from .models import ContactFormModel
 
-class ContactForm(forms.Form):
-    name = forms.CharField(
-        widget=forms.TextInput(attrs={'placeholder': "Input your name", 'class': "form-control mb-3"}),
-    )
-    email = forms.EmailField(
-        widget=forms.EmailInput(attrs={"placeholder": "Input your email", 'class': "form-control mb-3"}),
-    )
-    message = forms.CharField(
-        widget=forms.TextInput(attrs={"placeholder": "Input your message", 'class': "form-control mb-3", 'rows': 4}),
-    )
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = ContactFormModel
+        fields = ["name", "email", "message"]
+        widgets = {
+            "name": forms.TextInput(
+                attrs={
+                    'class': 'form-control mb-3',
+                    'placeholder': 'Your Name'
+                }
+            ),
+            "email": forms.EmailInput(
+                attrs={
+                    'class': 'form-control mb-3',
+                    'placeholder': 'Your Email'
+                }
+            ),
+            "message": forms.Textarea(
+                attrs={
+                    'class': 'form-control mb-3',
+                    'placeholder': 'Your Message'
+                }
+            )
+        }

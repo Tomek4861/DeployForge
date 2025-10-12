@@ -12,6 +12,7 @@
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit" class="btn btn-primary">Send Message</button>
+            <p class="text-secondary mt-2 mb-0">Total messages sent by users: {{ messages_count }}</p>
         </form>
 
     </div>

@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from . import forms
+from .models import ContactFormModel
 
 
 # Create your views here.
@@ -37,10 +38,18 @@ def contact_page(request):
     if request.method == 'POST':
         form = forms.ContactForm(request.POST)
         if form.is_valid():
+            form.save()
             name = form.cleaned_data["name"]
             email = form.cleaned_data["email"]
             message = form.cleaned_data["message"]
             print(f"New contact message from {name} ({email}): {message}")
+    else:
+        form = forms.ContactForm()
+    count = ContactFormModel.objects.count()
+    return render(request, 'contact.html', {'form': form, "messages_count": count})
 
-    form = forms.ContactForm()
-    return render(request, 'contact.html', {'form': form})
+
+@api_view(["GET"])
+def messages_count(request):
+    count = ContactFormModel.objects.count()
+    return Response({"totalMessagesReceived": count})
