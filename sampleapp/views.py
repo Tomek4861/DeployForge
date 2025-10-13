@@ -43,6 +43,7 @@ def contact_page(request):
             email = form.cleaned_data["email"]
             message = form.cleaned_data["message"]
             print(f"New contact message from {name} ({email}): {message}")
+            form = forms.ContactForm()
     else:
         form = forms.ContactForm()
     count = ContactFormModel.objects.count()
