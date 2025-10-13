@@ -3,19 +3,20 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>{% block title %}Cloud Project{% endblock %}</title>
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/bootstrap-icons.css' %}" rel="stylesheet">
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <script defer src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 
     {% block extra_head %} {% endblock %}
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light px-4">
     <a class="navbar-brand" href="{% url 'home' %}">Example Portfolio</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+            data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -24,10 +25,10 @@
                 <a class="nav-link" href="{% url 'home' %}">Home</a>
             </li>
             <li class="nav-item d-flex align-items-center">
-                <a class="nav-link" href="/portfolio">Portfolio</a>
+                <a class="nav-link" href="{% url 'portfolio' %}">Portfolio</a>
             </li>
             <li class="nav-item d-flex align-items-center">
-                <a class="nav-link" href="/contact">Contact</a>
+                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active fw-bold text-primary fs-5" href="{% url 'api_root' %}">API Playground</a>

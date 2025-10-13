@@ -28,7 +28,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
-CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",")
+if origins := os.getenv("CSRF_TRUSTED_ORIGINS", None):
+    CSRF_TRUSTED_ORIGINS = origins.split(",")
 
 
 # Application definition
