@@ -1,5 +1,8 @@
-# Use python
+# use python
 FROM python:3.10-slim
+
+# create users group
+RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
 
 
 # Set env variables
@@ -10,15 +13,23 @@ ENV PYTHONUNBUFFERED=1
 # set workdir inside container
 WORKDIR /app
 
-# copy files
-COPY . /app/
+#install just re
+COPY requirements.txt .
 
 # install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
+# copy files
+COPY . /app/
+
 # collect static files
 RUN python manage.py collectstatic --noinput --clear
 
+# change owner of /app
+RUN chown -R appuser:appgroup /app
+
+# switch to safe user
+USER appuser
 
 # state which port will be used
 EXPOSE 8000
