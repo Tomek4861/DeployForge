@@ -19,6 +19,9 @@ COPY requirements.txt .
 # install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
+# update pip
+RUN pip install --upgrade pip
+
 # copy files
 COPY . /app/
 
